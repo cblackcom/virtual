@@ -76,7 +76,9 @@
 				2ABF25A924CF7B07001BEDC2 /* Products */,
 				2A88E54424D7A77E0089EB00 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		2ABF25A924CF7B07001BEDC2 /* Products */ = {
 			isa = PBXGroup;
