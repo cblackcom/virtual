@@ -47,18 +47,27 @@ class VirtualSystem: NSObject, VZVirtualMachineDelegate {
     }
 
     var network: [VZVirtioNetworkDeviceConfiguration] = []
+    let networkDevice = VZVirtioNetworkDeviceConfiguration()
+
+    // WIP:
+    // Without com.apple.vm.networking from Apple, this list is empty
+    // Running as root doesn't seem to make a difference
+    let x = VZBridgedNetworkInterface.networkInterfaces
+    print(x)
 
     if command.network {
-      let networkDevice = VZVirtioNetworkDeviceConfiguration()
-      if !command.macaddr.isEmpty {
-        if let macAddress = VZMACAddress(string: command.macaddr) {
-            networkDevice.macAddress = macAddress
-        } else {
-            NSLog("Ignoring MAC Address: was not in acceptable format e.g. 01:23:45:ab:cd:ef")
-        }
-      }
       networkDevice.attachment = VZNATNetworkDeviceAttachment()
       network.append(networkDevice)
+    } else if !command.bridged.isEmpty {
+      //networkDevice.attachment = VZBridgedNetworkDeviceAttachment(interface: )
+    }
+    
+    if !command.macaddr.isEmpty {
+      if let macAddress = VZMACAddress(string: command.macaddr) {
+          networkDevice.macAddress = macAddress
+      } else {
+          NSLog("Ignoring MAC Address: was not in acceptable format e.g. 01:23:45:ab:cd:ef")
+      }
     }
 
     let serial = VZVirtioConsoleDeviceSerialPortConfiguration()
