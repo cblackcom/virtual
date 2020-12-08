@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{76:function(a){a.exports=JSON.parse('{"allTagsPath":"/virtual/blog/tags","slug":"apple-silicon","name":"apple silicon","count":1,"permalink":"/virtual/blog/tags/apple-silicon"}')}}]);
